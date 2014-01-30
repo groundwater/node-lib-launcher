@@ -1,5 +1,8 @@
 var assert = require('assert');
 
+// constants
+var PIPE = 'pipe';
+
 //-----------------
 // class definition
 //-----------------
@@ -18,12 +21,19 @@ function Launcher(spawn) {
   this.gid    = 0;
 }
 
-//---------------
-// object methods
-//---------------
+//-----------------
+// instance methods
+//-----------------
 
-var PIPE = 'pipe';
+/*
 
+  start a process
+
+  - emits a new process each time it's called
+  - the on/exit events are proxied to the launcher
+  - stdio is always piped
+
+*/
 Launcher.prototype.start = function start(){
   var events = this.events;
 
@@ -70,6 +80,14 @@ Launcher.NewWithEmitter = function NewWithEmitter(ee) {
   return proc;
 };
 
+/*
+
+  create a new launcher module
+
+  - uid/gid/cwd are initialized to sensible defaults
+  - a new event emitter is created to handle events
+
+*/
 Launcher.New = function New() {
   var ee   = this.emitter();
   var proc = this.NewWithEmitter(ee);

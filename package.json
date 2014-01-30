@@ -1,13 +1,18 @@
 {
   "name": "lib-launcher",
   "version": "0.0.0",
-  "description": "",
+  "description": "process launcher",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jacob Groundwater <groundwater@gmail.com>",
+  "license": "MIT",
+  "homepage": "http://github.com/jacobgroundwater/node-lib-launcher",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jacobgroundwater/node-lib-launcher.git"
+  },
   "devDependencies": {
     "sinon": "~1.7.3"
   }
