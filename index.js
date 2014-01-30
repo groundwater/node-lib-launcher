@@ -71,7 +71,7 @@ Launcher.NewWithEmitter = function NewWithEmitter(ee) {
 };
 
 Launcher.New = function New() {
-  var ee   = new this.emitter();
+  var ee   = this.emitter();
   var proc = this.NewWithEmitter(ee);
 
   proc.uid = this.process.getuid();
@@ -102,7 +102,9 @@ function inject_default() {
       value: spawn
     },
     emitter: {
-      value: emitter
+      value: function () {
+        return new emitter();
+      }
     },
     process: {
       value: process
