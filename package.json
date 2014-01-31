@@ -12,8 +12,5 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:jacobgroundwater/node-lib-launcher.git"
-  },
-  "devDependencies": {
-    "sinon": "~1.7.3"
   }
 }
