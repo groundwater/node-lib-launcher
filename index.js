@@ -67,17 +67,17 @@ Launcher.spawn = null;
 //-------------------
 
 Launcher.NewEmpty = function NewEmpty() {
-  var proc = new Launcher(this.spawn);
+  var launcher = new Launcher(this.spawn);
 
-  return proc;
+  return launcher;
 };
 
 Launcher.NewWithEmitter = function NewWithEmitter(ee) {
-  var proc = this.NewEmpty();
+  var launcher = this.NewEmpty();
 
-  proc.events = ee;
+  launcher.events = ee;
 
-  return proc;
+  return launcher;
 };
 
 /*
@@ -90,13 +90,22 @@ Launcher.NewWithEmitter = function NewWithEmitter(ee) {
 */
 Launcher.New = function New() {
   var ee   = this.emitter();
-  var proc = this.NewWithEmitter(ee);
+  var launcher = this.NewWithEmitter(ee);
 
-  proc.uid = this.process.getuid();
-  proc.gid = this.process.getgid();
-  proc.cwd = this.process.cwd();
+  launcher.uid = this.process.getuid();
+  launcher.gid = this.process.getgid();
+  launcher.cwd = this.process.cwd();
 
-  return proc;
+  return launcher;
+};
+
+Launcher.NewFromObject = function NewFromObject(obj) {
+  var launcher = this.New();
+  for (key in obj) {
+    if (launcher[key] !== undefined) launcher[key] = obj[key];
+  }
+
+  return launcher;
 };
 
 //--------------------
