@@ -1,6 +1,6 @@
 {
   "name": "lib-launcher",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "process launcher",
   "main": "index.js",
   "scripts": {
